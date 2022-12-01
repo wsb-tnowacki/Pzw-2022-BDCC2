@@ -12,6 +12,9 @@ Lista postów
         <th scope="col">Tytuł</th>
         <th scope="col">Autor</th>
         <th scope="col">Data powstania</th>
+        @auth
+        <th scope="col">Akcja</th>
+        @endauth
       </tr>
     </thead>
     <tbody>
@@ -23,6 +26,16 @@ Lista postów
         <td><a href="{{ route('posty.show', $post->id) }}">{{ $post->tytul }}</a></td>
         <td>{{ $post->autor }}</td>
         <td>{{ date('j F Y',strtotime($post->created_at)) }}</td>
+        @auth
+        <td>
+          <form class="form-inline" method="POST" action="{{ route('posty.destroy', $post->id) }}">
+          <a href="{{ route('posty.edit', $post->id) }}"><button class="btn btn-success m-1" type="button" >E</button></a>
+          @csrf
+          @method("DELETE")
+          <button class="btn btn-danger m-1" type="submit" >U</button>
+          </form>
+        </td>  
+        @endauth
       </tr>     
       @endforeach
       @else

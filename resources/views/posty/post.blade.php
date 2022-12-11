@@ -18,11 +18,11 @@ Szczegóły postu
     </div>
     <div class="form-group">
         <label for="autor">Autor</label>
-        <input type="text" class="form-control" value="{{ $post->autor }}" id="autor" name="autor" disabled="disabled">
+        <input type="text" class="form-control" value="{{ $post->autor }} / {{ $post->user->name }}" id="autor" name="autor" disabled="disabled">
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" value="{{ $post->email }}" id="email" name="email" disabled="disabled">
+        <input type="email" class="form-control" value="{{ $post->email }} / {{ $post->user->email }}" id="email" name="email" disabled="disabled">
     </div>
     <div class="form-group">
       <label for="tresc">Treść postu</label>
@@ -34,4 +34,5 @@ Szczegóły postu
     <button class="btn btn-danger" type="submit" >Usuń</button>
     @endauth
   </form>
+  {{-- dump($post) --}}
 @endsection

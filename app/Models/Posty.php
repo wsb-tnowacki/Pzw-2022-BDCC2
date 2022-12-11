@@ -9,4 +9,9 @@ class Posty extends Model
 {
     use HasFactory;
     protected $table = 'posty' ;
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
 }
